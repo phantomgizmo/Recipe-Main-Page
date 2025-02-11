@@ -110,7 +110,10 @@ textarea:not([rows]) {
   --clr-rose-50: hsl(330, 100%, 98%);
   --clr-rose-800: hsl(332, 51%, 32%);
 
-  --inline-space: 1.275rem;
+  --inline-space: 1.755rem;
+
+  --list-inline-start-space: 0.345rem;
+  --list-item-inline-start-space: 1.835rem;
 }
 
 @media (width > 375px) {
@@ -132,6 +135,10 @@ body {
   background-color: var(--clr-white);
 }
 
+.wrapper section:not(:last-child) {
+  border-bottom: 1px solid var(--clr-stone-150);
+}
+
 .main-header {
   margin-block-start: calc(-1 * var(--inline-space));
   margin-inline: calc(-1 * var(--inline-space));
@@ -139,7 +146,7 @@ body {
 
 .recipe-title {
   font-family: "Young serif", "serif";
-  font-size: 2.315rem;
+  font-size: 2.255rem;
   line-height: 1.025;
   color: var(--clr-stone-900);
 }
@@ -165,12 +172,14 @@ body {
 
 .prep-time__list li {
   margin-inline-end: 2rem;
-  padding-inline: 1.135rem;
+  padding-inline-start: 1.135rem;
 }
 
 /* Prep time list marker */
 .prep-time__list li::marker {
-  font-size: 0.715rem;
+  content: "\2022";
+  font-size: 1.245rem;
+
   color: var(--clr-rose-800);
 }
 
@@ -180,29 +189,76 @@ h2 {
 }
 
 .ingredients__list {
-  display: flex;
-  flex-direction: column;
-
   list-style: none;
 
   margin-inline-start: 0;
-  padding-inline-start: 1rem;
+  padding-inline-start: var(--list-inline-start-space);
 }
 
 .ingredients__list li {
   position: relative;
 
-  padding-inline: 1.135rem;
-
-  border: 1px dotted red;
+  padding-inline-start: var(--list-item-inline-start-space);
 }
 
 .ingredients__list li::before {
-  content: "•";
+  display: inline-block;
+  content: "\2022";
+  font-variant-numeric: tabular-nums;
+  font-size: 1.245rem;
+  font-weight: 400;
+
   position: absolute;
 
+  top: 50%;
   left: 0;
+  transform: translateY(-50%);
 
-  margin-inline-end: 1rem;
   color: var(--clr-rose-800);
+}
+
+.instructions__list {
+  margin-inline-start: 0;
+  padding-inline-start: calc(1rem + var(--list-inline-start-space));
+}
+
+.instructions__list li {
+  padding-inline-start: calc(var(--list-item-inline-start-space) - 1rem);
+}
+
+.instructions__list li::marker {
+  font-weight: 600;
+
+  color: var(--clr-brown-800);
+}
+
+.nutrition__table {
+  width: 100%;
+
+  margin-block-start: 1.245rem;
+
+  border-collapse: collapse;
+}
+
+.nutrition__table caption {
+  text-align: left;
+  text-wrap: balance;
+
+  margin-block-end: 0.75rem;
+}
+
+/* Divider for table row */
+.nutrition__table tr:not(:last-child) {
+  border-bottom: 1px solid var(--clr-stone-100);
+}
+
+.nutrition__table td {
+  text-align: center;
+
+  padding-block: 0.625rem;
+}
+
+.nutrition__value {
+  font-weight: 400;
+  color: var(--clr-brown-800);
 }
