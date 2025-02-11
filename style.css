@@ -123,16 +123,28 @@ body {
   font-family: "Outfit", "serif";
   font-weight: 400;
   color: var(--clr-stone-600);
+
+  align-content: center;
+
+  background-color: var(--clr-stone-100);
 }
 
 .wrapper {
+  /* set explicit width */
+  max-width: 700px;
+
   display: flex;
   gap: 1.525rem;
   flex-direction: column;
 
+  margin-inline: auto;
   padding: var(--inline-space);
 
   background-color: var(--clr-white);
+
+  @media (width > 705px) {
+    border-radius: 1.25rem;
+  }
 }
 
 .wrapper section:not(:last-child) {
@@ -142,6 +154,15 @@ body {
 .main-header {
   margin-block-start: calc(-1 * var(--inline-space));
   margin-inline: calc(-1 * var(--inline-space));
+
+  @media (width > 705px) {
+    margin-block-start: 0;
+    margin-inline: auto;
+
+    border-radius: 0.75rem;
+
+    overflow: hidden;
+  }
 }
 
 .recipe-title {
